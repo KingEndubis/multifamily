@@ -1,0 +1,63 @@
+name: Release Windows NSIS installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install system dependencies (nsis, 7zip)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends nsis p7zip-full
+
+      - name: Install npm dependencies
+        working-directory: app
+        run: npm ci
+
+      - name: Build web assets (Expo)
+        working-directory: app
+        env:
+          EXPO_NO_TELEMETRY: '1'
+          CI: 'true'
+        run: npm run build:web
+
+      - name: Build Windows NSIS installer
+        working-directory: app
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+          CI: 'true'
+        run: npx electron-builder --win nsis --x64 --publish never --log-level debug
+
+      - name: Extract version from package.json
+        id: version
+        working-directory: app
+        run: echo "VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Create GitHub Release and upload installer
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: Mulfa Companion v${{ env.VERSION }}
+          draft: false
+          prerelease: false
+          files: |
+            app/dist_electron/Mulfa-Setup-${{ env.VERSION }}.exe
+            app/dist_electron/builder-debug.yml
+            app/dist_electron/builder-effective-config.yaml
