@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-release:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: write
     timeout-minutes: 30
@@ -22,10 +22,17 @@ jobs:
           cache: 'npm'
           cache-dependency-path: app/package-lock.json
 
-      - name: Install system dependencies (nsis, 7zip)
+      - name: Install system dependencies (NSIS, 7zip)
+        shell: powershell
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends nsis p7zip-full
+          choco install nsis 7zip -y
+
+      - name: Print tool versions
+        shell: bash
+        run: |
+          node -v
+          npm -v
+          npx electron-builder --version
 
       - name: Install npm dependencies
         working-directory: app
@@ -44,6 +51,11 @@ jobs:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
           CI: 'true'
         run: npx electron-builder --win nsis --x64 --publish never --log-level debug
+
+      - name: List build output directory
+        shell: bash
+        run: |
+          ls -la app/dist_electron || true
 
       - name: Extract version from package.json
         id: version
