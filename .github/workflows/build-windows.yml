@@ -28,7 +28,7 @@ jobs:
           choco install nsis 7zip -y
 
       - name: Print tool versions
-        shell: bash
+        shell: powershell
         run: |
           node -v
           npm -v
@@ -53,9 +53,9 @@ jobs:
         run: npx electron-builder --win nsis --x64 --publish never --log-level debug
 
       - name: List build output directory
-        shell: bash
+        shell: powershell
         run: |
-          ls -la app/dist_electron || true
+          if (Test-Path 'app/dist_electron') { Get-ChildItem -Force 'app/dist_electron' } else { Write-Output 'dist_electron not found' }
 
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
