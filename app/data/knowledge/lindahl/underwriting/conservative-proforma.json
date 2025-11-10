@@ -1,0 +1,30 @@
+{
+  "id": "conservative-proforma-analysis",
+  "title": "Conservative Pro Forma Analysis",
+  "category": "underwriting",
+  "subcategory": "financial-analysis",
+  "summary": "A methodical approach to creating realistic financial projections that account for market fluctuations and unexpected expenses, ensuring investment decisions are based on worst-case scenarios rather than best-case possibilities.",
+  "key_points": [
+    "Always use actual T-12 operating statements as your baseline, not seller projections",
+    "Add 5-10% to historical expenses to account for inflation and unexpected costs",
+    "Use market vacancy rates plus 2-3% in your calculations, never assume full occupancy",
+    "Calculate management fees at market rates even if self-managing",
+    "Include reserves for capital expenditures based on property age and condition",
+    "Project rent increases conservatively based on historical data, not aspirational goals",
+    "Stress test your assumptions with higher interest rates and lower occupancy scenarios"
+  ],
+  "examples": [
+    "For a 1970s building with deferred maintenance, allocating 7-10% of gross income for CapEx reserves",
+    "Using 92% economic occupancy when market average is 95% to build in safety margin",
+    "Calculating debt coverage ratio at 1.3 instead of lender-required 1.25 to ensure buffer"
+  ],
+  "related_concepts": [
+    "break-even-occupancy",
+    "stress-testing",
+    "capital-expenditure-planning"
+  ],
+  "source": {
+    "book": "Multi-Family Millions",
+    "chapter": "Chapter 5: Analyzing the Deal"
+  }
+}

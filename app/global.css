@@ -1,0 +1,129 @@
+/* Global styles for web (no Tailwind @apply to avoid bundler warnings) */
+
+/* Buttons */
+.btn {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: #0077e6; /* brand-600 */
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  display: inline-block;
+}
+
+/* Chat UI additions */
+.message-list {
+  background: #ffffff;
+  border: 1px solid #cfe3f7; /* brand-200 */
+  border-radius: 12px;
+  max-height: 320px; /* ~max-h-80 */
+  padding: 8px;
+}
+/* Sleek UI styles */
+.transform {
+  transform: var(--tw-transform);
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+}
+
+.left-1\/2 {
+  left: 50%;
+}
+
+/* Message styles */
+.message-bubble {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.user-message {
+  background-color: #0077e6; /* brand-600 */
+  color: #ffffff;
+  margin-left: auto;
+}
+
+.ai-message {
+  background-color: #ffffff;
+  border: 1px solid #f3f4f6;
+  color: #111827;
+}
+
+/* History panel */
+.history-panel {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  max-height: 192px;
+}
+
+/* Input styles */
+.chat-input-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.attachment-preview {
+  background-color: #ffffff;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid #e5e7eb;
+  border-bottom: 0;
+}
+
+/* Cards */
+.card {
+  border-radius: 16px;
+  background: rgba(255,255,255,0.9);
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+.heading {
+  font-size: 24px;
+  font-weight: 700;
+  color: #004080; /* brand-800 */
+}
+.subheading {
+  font-size: 14px;
+  color: #005bb4; /* brand-700 */
+}
+
+/* Grok-like homepage helpers */
+.hero {
+  border-radius: 24px;
+  background-color: #00284d; /* brand-900 */
+  padding: 32px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border: 1px solid #004080; /* brand-800 */
+}
+.hero-title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffffff;
+}
+.hero-subtitle {
+  font-size: 16px;
+  color: #cce9ff; /* brand-200 */
+  margin-top: 8px;
+}
+.section { margin: 24px 0; }
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #004080; /* brand-800 */
+  margin-bottom: 12px;
+}
+.chip {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 9999px;
+  background-color: #005bb4; /* brand-700 */
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}

@@ -1,0 +1,30 @@
+{
+  "id": "professional-property-management",
+  "title": "Professional Property Management Systems",
+  "category": "operations",
+  "subcategory": "management",
+  "summary": "A systematic approach to property operations that maximizes NOI through effective tenant screening, maintenance protocols, and expense control while creating value through professional management practices.",
+  "key_points": [
+    "Implement strict tenant screening criteria focusing on income verification, credit history, and rental references",
+    "Create standardized maintenance request systems with response time protocols",
+    "Develop preventative maintenance schedules to reduce emergency repairs",
+    "Implement rent collection policies with clear late fee enforcement",
+    "Conduct regular market surveys to ensure rents remain competitive",
+    "Track and benchmark expenses against industry standards by unit/square foot",
+    "Build relationships with reliable service providers for volume discounts"
+  ],
+  "examples": [
+    "Reducing turnover costs by 30% through systematic make-ready processes",
+    "Decreasing vacancy loss by implementing 60-day advance renewal notices with incentives",
+    "Cutting utility expenses through water conservation fixtures and common area lighting upgrades"
+  ],
+  "related_concepts": [
+    "tenant-retention-strategies",
+    "expense-management",
+    "maintenance-systems"
+  ],
+  "source": {
+    "book": "Multi-Family Millions",
+    "chapter": "Chapter 7: Managing Your Property"
+  }
+}

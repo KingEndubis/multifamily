@@ -1,0 +1,29 @@
+{
+  "id": "market-selection-framework",
+  "title": "Emerging Market Selection Framework",
+  "category": "emerging-markets",
+  "subcategory": "market-analysis",
+  "summary": "A systematic approach to identifying emerging real estate markets before they become mainstream, focusing on economic indicators, population trends, and supply-demand dynamics that signal growth potential.",
+  "key_points": [
+    "Focus on job growth as the primary indicator of future housing demand",
+    "Look for population growth trends, especially in-migration from other areas",
+    "Analyze rent growth rates compared to national averages",
+    "Evaluate supply constraints like geographic limitations or zoning restrictions",
+    "Consider business-friendly environments with lower taxes and regulations",
+    "Examine infrastructure improvements that may trigger neighborhood revitalization"
+  ],
+  "examples": [
+    "Secondary markets with strong job creation in healthcare, technology, or manufacturing sectors",
+    "Areas with new transportation infrastructure that improves accessibility",
+    "Neighborhoods adjacent to gentrifying areas showing early signs of spillover effects"
+  ],
+  "related_concepts": [
+    "path-of-progress",
+    "economic-drivers",
+    "landlord-friendly-legislation"
+  ],
+  "source": {
+    "book": "Emerging Real Estate Markets",
+    "chapter": "Chapter 3: Finding the Next Hot Market"
+  }
+}

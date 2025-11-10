@@ -1,0 +1,30 @@
+{
+  "id": "refinance-hold-strategy",
+  "title": "Refinance and Hold Strategy",
+  "category": "exit-strategies",
+  "subcategory": "capital-events",
+  "summary": "A wealth-building approach that involves refinancing a stabilized property after value-add improvements to extract equity while maintaining ownership, allowing investors to recover capital while continuing to benefit from cash flow and appreciation.",
+  "key_points": [
+    "Time refinance after property stabilization when improvements are fully reflected in NOI",
+    "Target 70-75% loan-to-value to extract maximum equity while maintaining positive cash flow",
+    "Ensure debt service coverage ratio remains at 1.25 or higher after refinancing",
+    "Consider longer amortization periods to maximize cash flow",
+    "Evaluate tax implications of cash-out refinancing versus selling",
+    "Analyze whether extracted capital deployed elsewhere would outperform continued ownership",
+    "Maintain reserves even after refinancing to protect against market fluctuations"
+  ],
+  "examples": [
+    "Purchasing a property for $1M with $250K down, adding $200K in improvements that increase value to $1.8M, then refinancing at 75% LTV to extract $350K while maintaining ownership",
+    "Using extracted capital as down payment on next acquisition while original property continues generating cash flow",
+    "Refinancing after 3-5 years when value-add improvements have matured and market has appreciated"
+  ],
+  "related_concepts": [
+    "cash-out-refinancing",
+    "debt-service-coverage-ratio",
+    "capital-recycling"
+  ],
+  "source": {
+    "book": "Multi-Family Millions",
+    "chapter": "Chapter 9: Exit Strategies"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "value-add-acquisition-strategy",
+  "title": "Value-Add Acquisition Strategy",
+  "category": "acquisition",
+  "subcategory": "deal-structuring",
+  "summary": "A strategic approach to acquiring underperforming multifamily properties with operational inefficiencies or physical deficiencies that can be improved to increase NOI and property value through targeted interventions.",
+  "key_points": [
+    "Target properties with below-market rents due to poor management or deferred maintenance",
+    "Look for operational inefficiencies like high expenses or poor tenant screening",
+    "Identify cosmetic improvements with high ROI (unit renovations, common areas, curb appeal)",
+    "Calculate renovation costs precisely with contractor bids, not estimates",
+    "Verify rent premiums for renovated units by comparing to actual market comps",
+    "Structure purchase with contingency periods for thorough due diligence",
+    "Negotiate seller financing or earnest money terms that protect your capital"
+  ],
+  "examples": [
+    "Acquiring a 50-unit property with dated interiors where $5,000 per unit renovation yields $150 monthly rent premium",
+    "Taking over a mismanaged property with 15% vacancy and reducing it to market rate of 5%",
+    "Converting unused storage space to additional rental units to increase gross potential income"
+  ],
+  "related_concepts": [
+    "forced-appreciation",
+    "renovation-roi-analysis",
+    "repositioning-strategy"
+  ],
+  "source": {
+    "book": "Multi-Family Millions",
+    "chapter": "Chapter 4: Finding the Deals"
+  }
+}

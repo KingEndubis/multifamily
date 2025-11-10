@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "schema": {
+    "concept": {
+      "id": "string",
+      "title": "string",
+      "category": "string",
+      "subcategory": "string",
+      "summary": "string",
+      "key_points": ["string"],
+      "examples": ["string"],
+      "related_concepts": ["string"],
+      "source": {
+        "book": "string",
+        "chapter": "string"
+      }
+    }
+  },
+  "categories": [
+    "emerging-markets",
+    "underwriting",
+    "acquisition",
+    "operations",
+    "exit-strategies"
+  ],
+  "books": [
+    "Emerging Real Estate Markets",
+    "Multi-Family Millions",
+    "Commercial Real Estate Investing"
+  ]
+}
