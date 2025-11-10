@@ -38,31 +38,25 @@ jobs:
         working-directory: app
         run: npm ci
 
-      - name: Build web assets (Expo)
+      - name: Run CI packaging script (Expo export + electron-builder)
         working-directory: app
         env:
           EXPO_NO_TELEMETRY: '1'
           CI: 'true'
-        run: npm run build:web
-
-      - name: Build Windows NSIS installer
-        working-directory: app
-        env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
-          CI: 'true'
-        run: npx electron-builder --win nsis --x64 --publish never --log-level debug
+        run: powershell -ExecutionPolicy Bypass -File scripts/ci.ps1
 
       - name: List build output directory
         shell: powershell
         run: |
-          if (Test-Path 'app/dist_electron') { Get-ChildItem -Force 'app/dist_electron' } else { Write-Output 'dist_electron not found' }
+          if (Test-Path 'app/dist_electron_new') { Get-ChildItem -Force 'app/dist_electron_new' } else { Write-Output 'dist_electron_new not found' }
 
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
         with:
           name: Mulfa-Setup
           path: |
-            app/dist_electron/Mulfa-Setup-*.exe
-            app/dist_electron/builder-debug.yml
-            app/dist_electron/builder-effective-config.yaml
+            app/dist_electron_new/Mulfa-Setup-*.exe
+            app/dist_electron_new/builder-debug.yml
+            app/dist_electron_new/builder-effective-config.yaml
           if-no-files-found: error
