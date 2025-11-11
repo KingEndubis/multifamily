@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-release:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     timeout-minutes: 30
@@ -22,13 +22,13 @@ jobs:
           cache: 'npm'
           cache-dependency-path: app/package-lock.json
 
-      - name: Install system dependencies (NSIS, 7zip)
-        shell: powershell
+      - name: Install system dependencies (NSIS, Wine, Mono, 7zip)
         run: |
-          choco install nsis 7zip -y
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends nsis p7zip-full wine64 wine32 mono-devel icoutils
 
       - name: Print tool versions
-        shell: powershell
         run: |
           node -v
           npm -v
@@ -38,18 +38,23 @@ jobs:
         working-directory: app
         run: npm ci
 
-      - name: Run CI packaging script (Expo export + electron-builder)
+      - name: Build web assets (Expo)
         working-directory: app
         env:
           EXPO_NO_TELEMETRY: '1'
           CI: 'true'
+        run: npm run build:web
+
+      - name: Build Windows NSIS installer
+        working-directory: app
+        env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
-        run: powershell -ExecutionPolicy Bypass -File scripts/ci.ps1
+          CI: 'true'
+        run: npx electron-builder --win nsis --x64 --publish never --log-level debug
 
       - name: List build output directory
-        shell: powershell
         run: |
-          if (Test-Path 'app/dist_electron_new') { Get-ChildItem -Force 'app/dist_electron_new' } else { Write-Output 'dist_electron_new not found' }
+          ls -la app/dist_electron || true
 
       - name: Extract version from package.json
         id: version
@@ -64,6 +69,6 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            app/dist_electron_new/Mulfa-Setup-${{ env.VERSION }}.exe
-            app/dist_electron_new/builder-debug.yml
-            app/dist_electron_new/builder-effective-config.yaml
+            app/dist_electron/Mulfa-Setup-${{ env.VERSION }}.exe
+            app/dist_electron/builder-debug.yml
+            app/dist_electron/builder-effective-config.yaml
