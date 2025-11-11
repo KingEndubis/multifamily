@@ -17,6 +17,9 @@ install:
       Install-Product node $env:nodejs_version
       node -v
       npm -v
+      # Ensure global npm bin directory exists to prevent ENOENT in npx
+      $npmBin = Join-Path $env:APPDATA 'npm'
+      if (-not (Test-Path $npmBin)) { New-Item -ItemType Directory -Path $npmBin | Out-Null }
       # System deps
       choco install nsis 7zip -y
 
@@ -24,8 +27,8 @@ build_script:
   - ps: |
       # Move into app directory
       cd app
-      # Install npm deps
-      npm ci
+      # Install npm deps (avoid peer conflicts and lock mismatches for Expo SDK 54)
+      npm i --no-audit --legacy-peer-deps
       # Export web assets (optional but aligns with electron-builder files config)
       npm run build:web
       # Build the Windows NSIS installer
