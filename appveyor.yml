@@ -3,7 +3,7 @@ version: '{build}'
 image: Visual Studio 2022
 
 environment:
-  nodejs_version: '20'
+  nodejs_version: '20.19.4'
   EXPO_NO_TELEMETRY: '1'
   CI: 'true'
   CSC_IDENTITY_AUTO_DISCOVERY: 'false'
@@ -13,8 +13,16 @@ init:
 
 install:
   - ps: |
-      # Install Node.js 20
+      # Install Node.js (minimum required for Expo SDK 54 is >= 20.19.4)
       Install-Product node $env:nodejs_version
+      $nodeVer = (node -v) -replace 'v',''
+      $minVer = [version]'20.19.4'
+      try { $currVer = [version]$nodeVer } catch { $currVer = [version]'0.0.0' }
+      if ($currVer -lt $minVer) {
+        Write-Host "Node version $currVer is below required $minVer; installing via Chocolatey"
+        choco install nodejs-lts -y --version=$env:nodejs_version
+        refreshenv
+      }
       node -v
       npm -v
       # Ensure global npm bin directory exists to prevent ENOENT in npx
