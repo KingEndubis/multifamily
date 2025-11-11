@@ -1,0 +1,44 @@
+version: '{build}'
+
+image: Visual Studio 2022
+
+environment:
+  nodejs_version: '20'
+  EXPO_NO_TELEMETRY: '1'
+  CI: 'true'
+  CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+
+init:
+  - ps: Update-AppveyorBuild -Message "Mulfa Windows NSIS build"
+
+install:
+  - ps: |
+      # Install Node.js 20
+      Install-Product node $env:nodejs_version
+      node -v
+      npm -v
+      # System deps
+      choco install nsis 7zip -y
+
+build_script:
+  - ps: |
+      # Move into app directory
+      cd app
+      # Install npm deps
+      npm ci
+      # Export web assets (optional but aligns with electron-builder files config)
+      npm run build:web
+      # Build the Windows NSIS installer
+      npx electron-builder --win nsis --x64 --publish never --log-level debug
+      # List output for debugging
+      if (Test-Path 'dist_electron') { Get-ChildItem -Force 'dist_electron' } else { Write-Host 'dist_electron not found' }
+
+artifacts:
+  - path: app\dist_electron\Mulfa-Setup-*.exe
+    name: Mulfa-Setup
+  - path: app\dist_electron\builder-debug.yml
+    name: builder-debug
+  - path: app\dist_electron\builder-effective-config.yaml
+    name: builder-effective-config
+
+skip_branch_with_pr: false
